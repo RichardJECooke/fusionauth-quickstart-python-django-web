@@ -50,7 +50,7 @@ AUTHENTICATION_BACKENDS = (
 
 # The below config is taken from fusionauth admin UI when you set up the Django application in it
 OIDC_RP_CLIENT_ID = 'e9fdb985-9173-4e01-9d73-ac2d60d1dc8e'
-OIDC_RP_CLIENT_SECRET = 'change-this-in-production-to-be-a-real-secret'
+OIDC_RP_CLIENT_SECRET = 'super-secret-secret-that-should-be-regenerated-for-production' # TODO get from env
 
 OIDC_OP_AUTHORIZATION_ENDPOINT = "http://localhost:9011/oauth2/authorize"
 OIDC_OP_TOKEN_ENDPOINT = "http://localhost:9011/oauth2/token"
