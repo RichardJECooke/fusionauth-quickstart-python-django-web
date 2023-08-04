@@ -1,10 +1,10 @@
-# Example Flask Application 
+# Example Flask Application
 
-This repo holds an example Python/Flask application that uses FusionAuth as the identity provider. 
-This application will use an OAuth Authorization Code Grant workflow to log a user in and get them access and 
+This repo holds an example Python/Django application that uses FusionAuth as the identity provider.
+This application will use an OAuth Authorization Code Grant workflow to log a user in and get them access and
 refresh tokens.
 
-This application was built by following the [Python/Flask Quickstart](https://fusionauth.io/docs/quickstarts/quickstart-python-flask-web).
+This application was built by following the [Python/Django Quickstart](https://fusionauth.io/docs/quickstarts/quickstart-python-django-web).
 
 ## Project Contents
 
