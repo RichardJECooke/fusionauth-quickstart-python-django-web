@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.http import HttpResponseRedirect
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('app/', include('app.urls')),
-    #  path('login/', include('app.urls')),
-    # path('app/login/', include('app.urls')),
+    path('logout/', lambda request: HttpResponseRedirect("http://localhost:9011/logout"), name='logout'),
     path('oidc/', include('mozilla_django_oidc.urls')),
 ]

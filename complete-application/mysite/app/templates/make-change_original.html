@@ -11,13 +11,13 @@
         <img src="https://fusionauth.io/assets/img/samplethemes/changebank/changebank.svg" />
         <div class="h-row">
           <p class="header-email">{{ request.session.email }}</p>
-          <a class="button-lg" href="{% url 'logout' %}">Logout</a>
+          <a class="button-lg" href="/logout">Logout</a>
         </div>
       </div>
 
       <div id="menu-bar" class="menu-bar">
-        <a class="menu-link" href="{% url 'change' %}">Make Change</a>
-        <a class="menu-link inactive" href="{% url 'login' %}">Account</a>
+        <a class="menu-link" href="app/make-change">Make Change</a>
+        <a class="menu-link inactive" href="app/login">Account</a>
       </div>
     </div>
 
@@ -26,15 +26,15 @@
         <div class="app-container change-container">
           <h3>We Make Change</h3>
 
-          {% if change.error %}
-            <div class="error-message">{{ change.error }}</div>
-          {% else %}
+          {% if change["error"] is not none: %}
+            <div class="error-message">{{change.error}}</div>
+          {% else: %}
             <div class="change-message">
-              We can make change for ${{ change.total }} with {{ change.nickels }} nickels and {{ change.pennies }} pennies!
+              We can make change for ${{change.total}} with {{change.nickels}} nickels and {{change.pennies}} pennies!
             </div>
           {% endif %}
 
-          <form method="post" action="{% url 'change' %}">
+          <form method="post" action="app/make-change">
             <div class="h-row">
               <div class="change-label">Amount in USD: $</div>
               <input class="change-input" name="amount" value="0.00" />

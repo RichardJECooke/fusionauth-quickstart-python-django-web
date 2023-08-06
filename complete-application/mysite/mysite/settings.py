@@ -12,6 +12,15 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+from dotenv import find_dotenv, load_dotenv
+
+ACCESS_TOKEN_COOKIE_NAME = "cb_access_token"
+REFRESH_TOKEN_COOKIE_NAME = "cb_refresh_token"
+USERINFO_COOKIE_NAME = "cb_userinfo"
+
+ENV_FILE = find_dotenv()
+if ENV_FILE:
+    load_dotenv(ENV_FILE)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-z60thtix%6fg@k$7g8_$88x8s$zb^%-xws0vb&u)6$z8r3#&zx'
+SECRET_KEY = os.environ['APP_SECRET_KEY'] # TODO'django-insecure-z60thtix%6fg@k$7g8_$88x8s$zb^%-xws0vb&u)6$z8r3#&zx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -49,17 +58,17 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # The below config is taken from fusionauth admin UI when you set up the Django application in it
-OIDC_RP_CLIENT_ID = 'e9fdb985-9173-4e01-9d73-ac2d60d1dc8e'
-OIDC_RP_CLIENT_SECRET = 'super-secret-secret-that-should-be-regenerated-for-production' # TODO get from env
+OIDC_RP_CLIENT_ID = os.environ['CLIENT_ID']
+OIDC_RP_CLIENT_SECRET = os.environ['CLIENT_SECRET']
 
-OIDC_OP_AUTHORIZATION_ENDPOINT = "http://localhost:9011/oauth2/authorize"
-OIDC_OP_TOKEN_ENDPOINT = "http://localhost:9011/oauth2/token"
-OIDC_OP_USER_ENDPOINT = "http://localhost:9011/oauth2/userinfo"
+OIDC_OP_AUTHORIZATION_ENDPOINT = os.environ['ISSUER'] + "/oauth2/authorize"
+OIDC_OP_TOKEN_ENDPOINT = os.environ['ISSUER'] + "/oauth2/token"
+OIDC_OP_USER_ENDPOINT = os.environ['ISSUER'] + "/oauth2/userinfo"
 
 OIDC_RP_SCOPES = "openid profile email"
 
 OIDC_RP_SIGN_ALGO = "RS256"
-OIDC_OP_JWKS_ENDPOINT = "http://localhost:9011/.well-known/jwks.json"
+OIDC_OP_JWKS_ENDPOINT = os.environ['ISSUER'] + "/.well-known/jwks.json"
 
 LOGIN_REDIRECT_URL = "http://localhost:8000/app/"
 LOGOUT_REDIRECT_URL = "http://localhost:8000/app/"

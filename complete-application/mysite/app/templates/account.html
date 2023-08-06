@@ -5,20 +5,19 @@
   <link rel="stylesheet" href="/static/css/changebank.css">
 </head>
 <body>
-    ACCOUNT
   <div id="page-container">
     <div id="page-header">
       <div id="logo-header">
         <img src="https://fusionauth.io/assets/img/samplethemes/changebank/changebank.svg" />
         <div class="h-row">
-          <p class="header-email">{{session["email"]}}</p>
-          <a class="button-lg" href={{logoutUrl}}>Logout</a>
+          <p class="header-email">{{ request.session.email }}</p>
+          <a class="button-lg" href="/logout">Logout</a>
         </div>
       </div>
 
       <div id="menu-bar" class="menu-bar">
-        <a class="menu-link inactive" href="/make-change">Make Change</a>
-        <a class="menu-link" href="/account">Account</a>
+        <a class="menu-link inactive" href="/app/make-change">Make Change</a>
+        <a class="menu-link" href="/app/login">Account</a>
       </div>
     </div>
 
