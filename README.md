@@ -1,8 +1,6 @@
-# Example Flask Application
+# Example Django Application
 
 This repo holds an example Python/Django application that uses FusionAuth as the identity provider.
-This application will use an OAuth Authorization Code Grant workflow to log a user in and get them access and
-refresh tokens.
 
 This application was built by following the [Python/Django Quickstart](https://fusionauth.io/docs/quickstarts/quickstart-python-django-web).
 
@@ -26,32 +24,17 @@ docker-compose up
 This will start a PostgreSQL database, and Elastic service, and the FusionAuth server.
 
 ## Running the Example App
-To run the application, first go into the project directory
+To run the application set up a Python virtual env and installg the project dependencies.
 
 ```shell
-cd complete-application
-```
-Set up a Python virtual env and installing the project dependencies.
-
-```shell
+cd complete-application && \
 python -m venv venv && \
 source venv/bin/activate && \
-pip install -r requirements.txt
+pip install -r requirements.txt && \
+python /mysite/manage.py runserver
 ```
 
-Then use the `flask run` command to start up the application.
-
-```shell
-flask --app server.py run
-```
-
-If you're going to be working on the application and want hot reloads of the server code, add the `--debug` flag.
-
-```shell
-flask --app server.py --debug run
-```
-
-Visit the local webserver at `http://localhost:5000/` and sign in using the credentials:
+Visit the local webserver at `http://localhost:8000/` and sign in using the credentials:
 
 * username: richard@example.com
 * password: password
