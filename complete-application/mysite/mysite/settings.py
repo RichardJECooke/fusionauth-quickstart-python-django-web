@@ -15,29 +15,14 @@ from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
 from urllib.parse import quote_plus, urlencode
 
-ACCESS_TOKEN_COOKIE_NAME = "cb_access_token"
-REFRESH_TOKEN_COOKIE_NAME = "cb_refresh_token"
-USERINFO_COOKIE_NAME = "cb_userinfo"
-
 ENV_FILE = find_dotenv()
 if ENV_FILE:
     load_dotenv(ENV_FILE)
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['APP_SECRET_KEY'] # TODO'django-insecure-z60thtix%6fg@k$7g8_$88x8s$zb^%-xws0vb&u)6$z8r3#&zx'
-
-# SECURITY WARNING: don't run with debug turned on in production!
+SECRET_KEY = os.environ['APP_SECRET_KEY']
 DEBUG = True
-
 ALLOWED_HOSTS = []
-
 
 # Application definition
 

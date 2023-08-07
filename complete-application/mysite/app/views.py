@@ -12,7 +12,7 @@ def app(request):
 def account(request):
     if not request.user.is_authenticated:
         return redirect('oidc_authentication_init')
-    return render(request, 'account.html')
+    return render(request, 'account.html', {'email': request.user.email})
 
 def logout(request):
     django_logout(request)
@@ -21,18 +21,14 @@ def logout(request):
 def change(request):
     if not request.user.is_authenticated:
         return redirect('oidc_authentication_init')
-    # return render(request, 'change.html')
-
     change = { "error": None }
     if request.method == 'POST':
         dollar_amt_param = request.POST.get("amount")
         try:
             if dollar_amt_param:
                 dollar_amt = float(dollar_amt_param)
-
                 nickels = int(dollar_amt / 0.05)
                 pennies = ceil((dollar_amt - (0.05 * nickels)) / 0.01)
-
                 change["total"] = "{:,.2f}".format(dollar_amt)
                 change["nickels"] = "{:,d}".format(nickels)
                 change["pennies"] = "{:,d}".format(pennies)
@@ -42,7 +38,7 @@ def change(request):
         request,
         'change.html',
         {
-            # 'session': loads(request.COOKIES.get('USERINFO_COOKIE_NAME', None)),
+            'email': request.user.email,
             'change': change
         }
     )
