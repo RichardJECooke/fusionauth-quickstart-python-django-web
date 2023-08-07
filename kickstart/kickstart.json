@@ -77,7 +77,7 @@
                     "authorizedRedirectURLs": ["http://localhost:8000/oidc/callback/", "http://localhost:8000"],
                     "authorizedOriginURLs": ["http://localhost:8000"],
                     "clientSecret": "super-secret-secret-that-should-be-regenerated-for-production",
-                    "logoutURL": "http://localhost:8000/app",
+                    "logoutURL": "http://localhost:8000/app/logout",
                     "enabledGrants": ["authorization_code","refresh_token"],
                     "debug": true,
                     "generateRefreshTokens": true
