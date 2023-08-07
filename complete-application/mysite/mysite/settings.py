@@ -22,25 +22,18 @@ INSTALLED_APPS = [
     'mozilla_django_oidc',
 ]
 
-AUTHENTICATION_BACKENDS = (
-    'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
-)
+AUTHENTICATION_BACKENDS = ('mozilla_django_oidc.auth.OIDCAuthenticationBackend',)
 
 OIDC_RP_CLIENT_ID = os.environ['CLIENT_ID']
 OIDC_RP_CLIENT_SECRET = os.environ['CLIENT_SECRET']
-
 OIDC_OP_AUTHORIZATION_ENDPOINT = os.environ['ISSUER'] + "/oauth2/authorize"
 OIDC_OP_TOKEN_ENDPOINT = os.environ['ISSUER'] + "/oauth2/token"
 OIDC_OP_USER_ENDPOINT = os.environ['ISSUER'] + "/oauth2/userinfo"
-
 OIDC_RP_SCOPES = "openid profile email"
-
 OIDC_RP_SIGN_ALGO = "RS256"
 OIDC_OP_JWKS_ENDPOINT = os.environ['ISSUER'] + "/.well-known/jwks.json"
-
 LOGIN_REDIRECT_URL = "http://localhost:8000/app/account/"
 LOGOUT_REDIRECT_URL = "http://localhost:8000/app/"
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -80,18 +73,10 @@ DATABASES = {
 }
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
 ]
 
 LANGUAGE_CODE = 'en-us'
