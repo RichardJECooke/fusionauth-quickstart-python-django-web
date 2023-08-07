@@ -22,7 +22,6 @@ from django.views.generic import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('app/', include('app.urls')),
-    # path('logout/', lambda request: HttpResponseRedirect("http://localhost:9011/logout"), name='logout'),
     path('oidc/', include('mozilla_django_oidc.urls')),
     path('', RedirectView.as_view(url='/app/', permanent=True)),
 ]

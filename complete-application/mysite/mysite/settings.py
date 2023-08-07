@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
+from urllib.parse import quote_plus, urlencode
 
 ACCESS_TOKEN_COOKIE_NAME = "cb_access_token"
 REFRESH_TOKEN_COOKIE_NAME = "cb_refresh_token"
@@ -70,7 +71,7 @@ OIDC_RP_SCOPES = "openid profile email"
 OIDC_RP_SIGN_ALGO = "RS256"
 OIDC_OP_JWKS_ENDPOINT = os.environ['ISSUER'] + "/.well-known/jwks.json"
 
-LOGIN_REDIRECT_URL = "http://localhost:8000/app/"
+LOGIN_REDIRECT_URL = "http://localhost:8000/app/account/"
 LOGOUT_REDIRECT_URL = "http://localhost:8000/app/"
 #end::oidcConfig[]
 

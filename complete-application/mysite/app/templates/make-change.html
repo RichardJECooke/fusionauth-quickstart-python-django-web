@@ -11,13 +11,16 @@
         <img src="https://fusionauth.io/assets/img/samplethemes/changebank/changebank.svg" />
         <div class="h-row">
           <p class="header-email">{{ request.session.email }}</p>
-          <a class="button-lg" href="{% url 'logout' %}">Logout</a>
+          <form class="button-lg"  action="{% url 'oidc_logout' %}" method="post">
+            {% csrf_token %}
+            <a class="button-lg" href="{{logout_url}}"  type="submit" >Logout</a>
+          </form>
         </div>
       </div>
 
       <div id="menu-bar" class="menu-bar">
         <a class="menu-link" href="{% url 'change' %}">Make Change</a>
-        <a class="menu-link inactive" href="{% url 'login' %}">Account</a>
+        <a class="menu-link inactive" href="{% url 'account' %}">Account</a>
       </div>
     </div>
 
@@ -35,6 +38,7 @@
           {% endif %}
 
           <form method="post" action="{% url 'change' %}">
+            {% csrf_token %}
             <div class="h-row">
               <div class="change-label">Amount in USD: $</div>
               <input class="change-input" name="amount" value="0.00" />
